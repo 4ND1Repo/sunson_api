@@ -15,14 +15,16 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.conf.urls import url
 
 from rest_framework import routers
 from myapi import views
 
 router = routers.DefaultRouter()
-router.register('people', views.PeopleAPI)
+router.register(r'people', views.PeopleAPI)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/', include(router.urls))
+    path(r'api/', include(router.urls)),
+    url(r'^api/people/(?P<pk>[0-9]+)/', views.PeopleAPI.as_view({'put' : 'update', 'delete': 'delete'})),
 ]
