@@ -7,6 +7,7 @@
     - pip install markdown
     - pip install django-filter
     - pip install mysqlclient
+    - pip install django-cors-headers
 
 
 Configuration :
